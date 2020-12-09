@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <title>Clean Room Checker</title>
+  </head>
+  <body>
+    <!--clean room checker.-->
+    <h1>clean room checker</h1>
+    <p>Note :- Please give one image at a time.</p>
+    <form method="post" action="/" enctype="multipart/form-data">
+      <dl>
+        <p>
+          <script>
+            var a = document.getElementById("input_image");
+            function get_url(input) {
+              if (input.files) {
+                var reader = new FileReader();
+                reader.readAsDataURL(input.files[0]);
+                reader.onload = (e) => {
+                  a.src = e.target.result;
+                };
+              }
+            }
+          </script>
+          <input
+            type="file"
+            onchange="get_url(this)"
+            on
+            name="files[]"
+            multiple="false"
+            autocomplete="off"
+            required
+          />
+        </p>
+      </dl>
+      <p>
+        <input type="submit" value="Upload" />
+      </p>
+    </form>
+    <h3>result</h3>
+    <h3>The cosine similarity score is {{data}}</h3>
+  </body>
+</html>
