@@ -1,6 +1,7 @@
 import os
 import time
-import cv2
+
+# import cv2
 import numpy as np
 import torch
 import torch.nn as nn
@@ -24,9 +25,7 @@ transform = transforms.Compose(
 
 
 def open_image(path):
-    im = cv2.imread(path)
-    cv_img_rgb = cv2.cvtColor(im, cv2.COLOR_BGR2RGB)
-    pil_im = Image.fromarray(cv_img_rgb)
+    pil_im = Image.open(path).convert("RGB")
     return transform(pil_im).unsqueeze(0)
 
 
